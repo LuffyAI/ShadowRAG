@@ -1,0 +1,9 @@
+*.env
+*.log
+*.pyc
+*.sqlite
+*.json
+*.pkl
+*.txt
+*.jsonl
+*.graphml
