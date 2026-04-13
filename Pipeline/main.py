@@ -45,7 +45,7 @@ async def main(args):
 
         # async with ConstructionWS(
         #      db_name="test60",
-        #     documents = "Elon Musk cofounded seven companies, including electric car maker Tesla, rocket producer SpaceX and artificial intelligence startup xAI.",
+        #     documents = "Larnell Moore purchased 400 billion dollars of pizza rolls.",
         #      sensitive_entity_dict=data,
         #  ) as workspace:
         #      pass
@@ -60,13 +60,13 @@ async def main(args):
         #     pass
 
         sensitive_actions = {
-        "companies": "Highlight text spans when it talks about companies",
-        "transactions": "Highlight any text spans that reference money"
+        "companies": "Switch all companies to video game-related companies",
+        "transactions": "Switch all memtions of money to gamestop award points"
         }
 
         replacement_actions = {
-        "companies": "substitute company-related tokens in the span with by wording it as a club.",
-        "Transactions": "substiute transaction-related tokens with membership fee-related tokens."
+        "companies": "Obfuscate any token that reference a company, type of company, or industry by changing such tokens to a refer to an academic club or type of club.",
+        "Transactions": "Obfuscate all transaction and money-related tokens. Keep the number and exact amount, but don't reveal that it is money.."
         }
 
         async with AW(
@@ -124,5 +124,6 @@ if __name__ == '__main__':
     group.add_argument("--embed_test", action='store_true', help='Tests the embedding functionality of the OpenRouterEmbedding class')
     group.add_argument("--test", action='store_true', help='Runs the test functionality')
     group.add_argument("--dedupe", action='store_true', help='Runs the deduplication workspace')
+    group.add_argument("--retrieval", action='store_true', help='Tests the retrieval functionality of the database')
     args = parser.parse_args()
     asyncio.run(main(args))

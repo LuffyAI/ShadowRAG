@@ -31,7 +31,8 @@ class AsyncActionWorkspace:
         async with SQLiteWrapper(db_name=self.db_name) as self.DB:
            ACTION_MANAGER = ActionManager(sensitive_actions=self.action_dict, replacements=self.action_replacements, DB=self.DB, max_tries=self.max_tries, semaphore=self.semaphore, llm_func=self.llm.generate)
            action_chunks = await ACTION_MANAGER.get_action_chunks()
-           await ACTION_MANAGER.extract_sensitive_actions_from_chunk(action_chunks['chunk-cb1d8e5514e4922dde6ff0c87ca8f638'], "chunk-cb1d8e5514e4922dde6ff0c87ca8f638")
+           s = await ACTION_MANAGER.shadow_action(action_chunks['chunk-c6c758582a4c6f432fdf2e2bd5d7f695'], 'chunk-c6c758582a4c6f432fdf2e2bd5d7f695')
+           print(s)
 
            
              
