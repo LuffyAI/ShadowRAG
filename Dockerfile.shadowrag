@@ -1,0 +1,36 @@
+# Dockerfile.base
+FROM python:3.10.12-slim
+WORKDIR /app
+
+# System-level dependencies 
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    g++ \
+    lsof \
+    netcat-openbsd \
+ && rm -rf /var/lib/apt/lists/*
+
+ # Python dependencies
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir \
+    torch --index-url https://download.pytorch.org/whl/cpu
+RUN pip install --no-cache-dir \
+    sentence-transformers==3.2.1
+RUN pip install --no-cache-dir \
+    jupyterlab==4.5.4 \
+    ipykernel==7.2.0 \
+    aiohttp \
+    bs4 \
+    openai==1.99.3 \
+    psutil==7.0.0 \
+    aiofiles==24.1.0 \
+    python-multipart==0.0.20 \
+    aiosqlite==0.21.0 \
+    tiktoken==0.11.0 \
+    sqlite-vec==0.1.6
+
+# Download and install LightRAG 1.4.6 tarball
+RUN bash -c "pip install gdown && gdown --id 1--vpmgEPqGabnK45QLfwGx7s5_FUK7zu -O LightRAG.tar.gz && pip install LightRAG.tar.gz"
+
+

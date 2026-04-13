@@ -7,3 +7,7 @@
 *.txt
 *.jsonl
 *.graphml
+*.db
+*.db-shm
+*.dh-wal
+Pipeline/Database/*

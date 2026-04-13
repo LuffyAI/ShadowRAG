@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  shadowrag:
+    build:
+      context: .
+      dockerfile: Dockerfile.shadowrag
+    env_file:
+      - .env
+    entrypoint: "python -u main.py $ARGS"
+    volumes: 
+    - ./Pipeline:/app
