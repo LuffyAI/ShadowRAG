@@ -11,4 +11,4 @@
 *.db-shm
 *.dh-wal
 Pipeline/Database/*
-Pipeline/Database/.gitkeep
+!Pipeline/Database/.gitkeep
